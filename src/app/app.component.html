@@ -1,3 +1,11 @@
-<h1>
-  {{title}}
-</h1>
+<input type="text" [(ngModel)]="name" (keypress)="enterEventHandler($event)">
+
+<input type="button" (click)="addItem(name)" value="Add">
+<input type="button" (click)="reset()" value="Reset">
+<ul id='list'>
+  <div *ngFor="let item of list ; let i = index">
+    <input type="checkbox" #cb (change)='0'>
+    <li [ngClass]="{'tick' : cb.checked}">{{item}}</li>
+    <input type="button" (click)='deleteItem(item)' value="x">
+  </div>
+</ul>
